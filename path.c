@@ -49,23 +49,27 @@ char  *_get_env(void)
 char *verify_path(char *cmd)
 {
 	char *test, *token, *_path;
-	int cnt;
 	struct stat st;
 
 	test = _get_env();
 	_path = malloc(sizeof(char) * _strlen(test));
 	token = strtok(test, ":");
-
-	for (cnt = 0; token; cnt++)
+	if (access(cmd, F_OK) == 0)
 	{
-		_strcpy(_path, token);
-		_strcat(_path, "/");
 		_strcat(_path, cmd);
-		if (stat(_path, &st) == 0)
+	}
+	else
+	{
+		for (; token; token = strtok(NULL, ":"))
 		{
-			break;
+			_strcpy(_path, token);
+			_strcat(_path, "/");
+			_strcat(_path, cmd);
+			if (stat(_path, &st) == 0)
+			{
+				break;
+			}
 		}
-		token = strtok(NULL, ":");
 	}
 	return (_path);
 }
