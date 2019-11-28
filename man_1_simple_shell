@@ -1,0 +1,110 @@
+.\" Manpage for simple_shell.
+.TH simple_shell 1 "27 nov 2019" "1.0" "simple_shell man page"
+
+.SH NAME
+simple_shell
+
+.SH SYNOPSIS
+.PP
+This Simple Shell is able to display the following prompt #cisfun$, where it expects the user to type a command and execute it after the user presses enter, showing the result of the command execution on the screen. After showing on the screen the result of the previous execution shows the same prompt again, waiting for the user to type a command again. This Simple Shell does not yet process advanced features such as: semicolons, pipes or redirections. It receives arguments such as: ls -l or cat main.c
+
+.SH DESCRIPTION
+.PP
+How to run the Simple Shell
+
+.PP
+.SH 1. Step - compilation
+
+The first thing we must do is to execute the program, so that it shows us the command line.
+
+vagrant@vagrant-ubuntu-trusty-64:~/simple_shell_test$ gcc -Wall -Werror -Wextra -pedantic *.c -o simple
+
+
+.PP
+.SH 2. Step - execute
+
+And now what we have to do is run the program, so that it shows us the command line.
+
+vagrant@vagrant-ubuntu-trusty-64:~/simple_shell_test$ ./simple
+
+.PP
+.SH 3. Step - linea de comandos
+
+Here we will have the command line available, for the user to enter the commands you want to execute
+
+
+vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$ ./simple
+.br
+#cisfun$
+
+.PP
+.SH How to use the Simple Shell
+
+In the command line we can only enter one word to execute at a time.
+
+#cisfun$
+As in the following examples:
+
+#cisfun$ ls
+.br
+README.md  main.c  path.c  shell.h  simple
+
+or
+
+#cisfun$ pwd
+.br
+/home/vagrant/simple_shell
+
+or
+
+#cisfun$ cat shell
+.br
+#cisfun$ cat shell.c
+.br
+ifndef _SHELL_H_
+.br
+#define _SHELL_H_
+
+#include <stdio.h>
+.br
+#include <unistd.h>
+.br
+#include <string.h>
+.br
+#include <stdlib.h>
+.br
+#include <sys/wait.h>
+.br
+#include <sys/stat.h>
+.br
+#include <signal.h>
+
+.br
+extern char **environ;
+
+.br
+void sig_handler(int num);
+.br
+int execute(char **argv, char *path);
+.br
+char  *_get_env(void);
+.br
+char *verify_path(char *cmd);
+.br
+char *_strcpy(char *dest, char *src);
+.br
+int _strlen(char *str);
+.br
+char *_strcat(char *dest, char *src);
+.br
+char *_strdup(char *str);
+
+#endif
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Manuel Mosquera - https://github.com/mmanumos
+.br
+Julián Sandoval - https://github.com/Derhks
