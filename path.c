@@ -30,6 +30,7 @@ char  *_get_env(void)
         }
         return (env[i]);
 }
+
 char *verify_path(char *cmd)
 {
         char *test, *token, *_path;
@@ -51,6 +52,7 @@ char *verify_path(char *cmd)
         }
         return (_path);
 }
+
 int execute(char **argv, char *path)
 {
         struct stat st;
