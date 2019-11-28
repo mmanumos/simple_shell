@@ -5,7 +5,7 @@ int main(void)
         int cnt = 0, status;
         size_t s_line = 0;
         ssize_t r_getline;
-        char *c_line = NULL,*c_line2 = NULL, *token = NULL, **argv, *path;
+        char *c_line = NULL, *token = NULL, **argv, *path;
 
 	while(1)
         {
