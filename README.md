@@ -55,7 +55,6 @@ or
 or
 
 ```
-#cisfun$ pwd
 #cisfun$ cat shell.c
 #ifndef _SHELL_H_
 #define _SHELL_H_
